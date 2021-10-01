@@ -33,7 +33,6 @@
 //  - Memory latch
 //  - Readout of latched value
 //----------------------------------------------------------------
-// kattepus
 module PIXEL_SENSOR
   (
    input logic      VBN1,
