@@ -16,16 +16,12 @@ module PIXEL_ARRAY(
 
 logic [7:0] counter = '0;
 
-// always_ff @(posedge COUNTER_CLOCK || posedge COUNTER_RESET) begin
-//     if (COUNTER_RESET) begin
-//         counter = 0;
-//     end else begin
-//         counter++;
-//     end
-// end
-
-always_ff @(posedge COUNTER_CLOCK ) begin
-    counter++;
+always_ff @(posedge COUNTER_CLOCK or posedge COUNTER_RESET) begin
+    if (COUNTER_RESET) begin
+        counter = 0;
+    end else begin
+        counter++;
+    end
 end
 
 endmodule
