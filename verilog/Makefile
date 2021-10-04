@@ -14,12 +14,13 @@ pac:
 
 clean:
 	-rm synthesis/pixelArray
-	-rm simulation/pixelArray_tb.vcd
+	-rm synthesis/pixelArrayCounter
 	-rm synthesis/pixelSensor
-	-rm simulation/pixelSensor_tb.vcd
-	-rm simulation/pixelSensor_tb.gtkw
+	-rm simulation/*.vcd
+	-rm simulation/*.gtkw
 
 all:
 	${MAKE} ps
-	${MAKE} pa
 	${MAKE} pac
+	${MAKE} pa
+	

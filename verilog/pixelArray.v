@@ -3,8 +3,8 @@
 module PIXEL_ARRAY(
     input logic POWER_ENABLE,
     input logic WRITE_ENABLE,
-    inout logic COUNTER_RESET,
-    inout logic COUNTER_CLOCK,
+    input logic COUNTER_RESET,
+    input logic COUNTER_CLOCK,
     input real  ANALOG_RAMP,
     input logic RESET,       // Reset voltage in paper
     input logic ERASE,       // Pixel reset in paper
@@ -14,8 +14,11 @@ module PIXEL_ARRAY(
 
 );
 
-logic [7:0] counter = '0;
-
+    PIXEL_ARRAY_COUNTER #() pac1(
+        .COUNTER_RESET (COUNTER_RESET),
+        .COUNTER_CLOCK (COUNTER_CLOCK),
+        .DATA (DATA) );
+        
 // always_comb
 // begin
 //     assign DATA = (WRITE_ENABLE) ? counter : DATA;

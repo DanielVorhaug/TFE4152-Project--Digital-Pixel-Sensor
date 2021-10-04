@@ -1,3 +1,4 @@
 
 pixelArray.v
+pixelArrayCounter.v
 pixelArray_tb.v
