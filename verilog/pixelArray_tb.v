@@ -10,7 +10,7 @@ module pixelArray_tb;
 
 
 
-    PIXEL_ARRAY #() drittport(
+    PIXEL_ARRAY #() pa1(
         .POWER_ENABLE (),
         .WRITE_ENABLE (),
         .COUNTER_RESET (reset),
@@ -33,6 +33,10 @@ module pixelArray_tb;
             $dumpfile("pixelArray_tb.vcd");
             $dumpvars(0,pixelArray_tb);
 
+            #sim_end
+                reset = 1;
+            #clk_period
+                reset = 0;
             #sim_end
                 $stop;
 
