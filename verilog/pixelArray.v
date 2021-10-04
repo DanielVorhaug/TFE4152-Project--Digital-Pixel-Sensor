@@ -24,4 +24,9 @@ always_ff @(posedge COUNTER_CLOCK or posedge COUNTER_RESET) begin
     end
 end
 
+always_comb
+begin
+    assign DATA = (WRITE_ENABLE) ? counter : DATA;
+end
+
 endmodule
