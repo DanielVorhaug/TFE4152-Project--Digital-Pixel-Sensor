@@ -2,3 +2,7 @@
 verilog/pixelSensor_tb.vcd
 
 verilog/pixelSensor
+
+verilog/pixelArray_tb.vcd
+
+verilog/pixelArray
