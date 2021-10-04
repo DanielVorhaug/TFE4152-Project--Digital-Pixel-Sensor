@@ -30,7 +30,7 @@ module pixelArray_tb;
 
             #clk_period  reset=0;
 
-            $dumpfile("pixelArray_tb.vcd");
+            $dumpfile("simulation/pixelArray_tb.vcd");
             $dumpvars(0,pixelArray_tb);
 
             #sim_end

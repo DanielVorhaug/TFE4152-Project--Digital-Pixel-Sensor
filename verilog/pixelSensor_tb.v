@@ -221,7 +221,7 @@ module pixelSensor_tb;
 
         #clk_period  reset=0;
 
-        $dumpfile("pixelSensor_tb.vcd");
+        $dumpfile("simulation/pixelSensor_tb.vcd");
         $dumpvars(0,pixelSensor_tb);
 
         #sim_end
