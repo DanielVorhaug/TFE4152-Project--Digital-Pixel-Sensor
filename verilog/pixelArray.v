@@ -10,7 +10,7 @@ module PIXEL_ARRAY(
     input logic ERASE,       // Pixel reset in paper
     input logic EXPOSE,      // PG in paper
 
-    inout [7:0] DATA,        //Will have to expand this to account for more pixels
+    inout wire [7:0] DATA,        //Will have to expand this to account for more pixels
 
 );
 
