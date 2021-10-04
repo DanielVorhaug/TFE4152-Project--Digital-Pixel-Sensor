@@ -6,3 +6,5 @@ verilog/pixelSensor
 verilog/pixelArray_tb.vcd
 
 verilog/pixelArray
+
+*.gtkw
