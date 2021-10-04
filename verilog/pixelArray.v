@@ -13,15 +13,13 @@ module PIXEL_ARRAY(
     inout wire [7:0] DATA    //Will have to expand this to account for more pixels
 
 );
+    logic [7:0] counter;// = '0;
 
     PIXEL_ARRAY_COUNTER #() pac1(
         .COUNTER_RESET (COUNTER_RESET),
         .COUNTER_CLOCK (COUNTER_CLOCK),
-        .DATA (DATA) );
-        
-// always_comb
-// begin
-//     assign DATA = (WRITE_ENABLE) ? counter : DATA;
-// end
+        .DATA (counter) );
+
+    assign DATA = (WRITE_ENABLE) ? counter : 'Z;
 
 endmodule
