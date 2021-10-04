@@ -6,3 +6,7 @@
 verilog/synthesis/pixelArray
 
 verilog/synthesis/pixelSensor
+
+verilog/pixelSensor
+
+verilog/pixelArray
