@@ -8,6 +8,10 @@ pa:
 	iverilog -g2012 -o synthesis/pixelArray -c pixelArray.fl
 	vvp -n synthesis/pixelArray
 
+pac:
+	iverilog -g2012 -o synthesis/pixelArrayCounter -c pixelArrayCounter.fl
+	vvp -n synthesis/pixelArrayCounter
+
 clean:
 	-rm synthesis/pixelArray
 	-rm simulation/pixelArray_tb.vcd
@@ -18,3 +22,4 @@ clean:
 all:
 	${MAKE} ps
 	${MAKE} pa
+	${MAKE} pac
