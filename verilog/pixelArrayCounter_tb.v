@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ps
 
-module pixelArrayCounter_tb;
+module PIXEL_ARRAY_COUNTER_tb;
 
     logic clk =0;
     logic reset =0;

@@ -1,4 +1,4 @@
-module pixelArrayBus (
+module PIXEL_ARRAY_BUS (
     input logic [WIDTH*8-1:0] DATA,
     input logic READ_CLK,
     output logic [15:0] OUT

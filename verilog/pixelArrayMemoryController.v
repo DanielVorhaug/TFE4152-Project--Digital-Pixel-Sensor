@@ -1,4 +1,4 @@
-module pixelArrayMemoryController (
+module PIXEL_ARRAY_MEMORY_CONTROLLER (
     input logic READ_RESET,
     input logic READ_CLK,
     output logic READ_CLK_OUT,

@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module pixelArrayReadPointer_tb ();
+module PIXEL_ARRAY_READ_POINTER_tb ();
 
 parameter integer HEIGHT = 4;
 logic [$clog2(HEIGHT):0] CONTROL = '0;
@@ -8,7 +8,7 @@ wire [HEIGHT-1: 0] ROW_SELECT;
 logic ENABLE = 0;
 parameter integer sim_period = 300;
 
-pixelArrayReadPointer #(.HEIGHT(HEIGHT)) parp1(
+PIXEL_ARRAY_READ_POINTER #(.HEIGHT(HEIGHT)) parp1(
     .CONTROL(CONTROL), .ROW_SELECT(ROW_SELECT), .ENABLE(ENABLE)
 );
 
