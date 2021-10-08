@@ -14,3 +14,5 @@ verilog/pixelArray
 verilog/synthesis/pixelArrayCounter
 
 verilog/synthesis/pixelArrayBus
+
+verilog/synthesis/pixelArrayReadPointer

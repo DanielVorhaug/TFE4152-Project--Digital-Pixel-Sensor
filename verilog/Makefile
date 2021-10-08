@@ -16,10 +16,15 @@ pab:
 	iverilog -g2012 -o synthesis/pixelArrayBus -c pixelArrayBus.fl
 	vvp -n synthesis/pixelArrayBus
 
+parp:
+	iverilog -g2012 -o synthesis/pixelArrayReadPointer -c pixelArrayReadPointer.fl
+	vvp -n synthesis/pixelArrayReadPointer
+
 clean:
 	-rm synthesis/pixelArray
 	-rm synthesis/pixelArrayCounter
 	-rm synthesis/pixelSensor
+	-rm synthesis/pixelArrayReadPointer
 	-rm synthesis/pixelArrayBus
 	-rm simulation/*.vcd
 	-rm simulation/*.gtkw
