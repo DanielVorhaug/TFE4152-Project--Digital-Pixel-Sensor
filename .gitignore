@@ -12,3 +12,5 @@ verilog/pixelSensor
 verilog/pixelArray
 
 verilog/synthesis/pixelArrayCounter
+
+verilog/synthesis/pixelArrayBus
