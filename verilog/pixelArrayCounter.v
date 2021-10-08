@@ -5,11 +5,15 @@ module PIXEL_ARRAY_COUNTER (
     output logic [7:0] DATA 
 );    
 
+    always_comb begin
+        DATA++;
+    end
+
     always_ff @(posedge COUNTER_CLOCK or posedge COUNTER_RESET) begin
         if (COUNTER_RESET) begin
             DATA = 0;
         end else begin
-            DATA++;
+            DATA = DATA;
         end
     end
     
