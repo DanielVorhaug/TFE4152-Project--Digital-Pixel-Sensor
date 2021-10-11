@@ -20,6 +20,14 @@ parp:
 	iverilog -g2012 -o synthesis/pixelArrayReadPointer -c pixelArrayReadPointer.fl
 	vvp -n synthesis/pixelArrayReadPointer
 
+psfsm:
+	iverilog -g2012 -o synthesis/pixelSensorFsm -c pixelSensorFsm.fl
+	vvp -n synthesis/pixelSensorFsm
+
+ysfsm:	# This might need changes as we changed the folder structure from Wulferns project
+	yosys pixelSensorFsm.ys
+	dot pixelSensorFsm.dot -Tpng > pixelSensorFsm.png
+
 clean:
 	-rm synthesis/pixelArray
 	-rm synthesis/pixelArrayCounter
