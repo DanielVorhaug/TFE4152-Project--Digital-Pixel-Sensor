@@ -20,6 +20,10 @@ parp:
 	iverilog -g2012 -o synthesis/pixelArrayReadPointer -c pixelArrayReadPointer.fl
 	vvp -n synthesis/pixelArrayReadPointer
 
+pamc:
+	iverilog -g2012 -o synthesis/pixelArrayMemoryController -c pixelArrayMemoryController.fl
+	vvp -n synthesis/pixelArrayMemoryController
+
 psfsm:
 	iverilog -g2012 -o synthesis/pixelSensorFsm -c pixelSensorFsm.fl
 	vvp -n synthesis/pixelSensorFsm
