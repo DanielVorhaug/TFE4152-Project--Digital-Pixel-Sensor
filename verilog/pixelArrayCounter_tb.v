@@ -4,7 +4,7 @@ module PIXEL_ARRAY_COUNTER_tb;
 
     logic clk =0;
     logic reset =0;
-    wire [7:0] counter = '0;
+    wire [7:0] counter;
     parameter integer clk_period = 500;
     parameter integer sim_end = clk_period*2400;
     always #clk_period clk=~clk;
