@@ -33,8 +33,8 @@ module PIXEL_ARRAY_MEMORY_CONTROLLER_tb ();
         begin
 
 
-            $dumpfile("simulation/pixelArrayMemoryController_tb.vcd");
-            $dumpvars(0,pixelArrayMemoryController_tb);
+            $dumpfile("simulation/PIXEL_ARRAY_MEMORY_CONTROLLER_tb.vcd");
+            $dumpvars(0,PIXEL_ARRAY_MEMORY_CONTROLLER_tb);
 
 
         end

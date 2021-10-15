@@ -25,8 +25,8 @@ module PIXEL_ARRAY_COUNTER_tb;
 
             #clk_period  reset=0;
 
-            $dumpfile("simulation/pixelArrayCounter_tb.vcd");
-            $dumpvars(0,pixelArrayCounter_tb);
+            $dumpfile("simulation/PIXEL_ARRAY_COUNTER_tb.vcd");
+            $dumpvars(0,PIXEL_ARRAY_COUNTER_tb);
 
             #sim_end
                 reset = 1;

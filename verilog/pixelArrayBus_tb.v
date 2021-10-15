@@ -15,8 +15,8 @@ PIXEL_ARRAY_BUS #(.WIDTH(WIDTH)) pab1(
 
 initial
     begin
-        $dumpfile("simulation/pixelArrayBus_tb.vcd");
-        $dumpvars(0, pixelArrayBus_tb);
+        $dumpfile("simulation/PIXEL_ARRAY_BUS_tb.vcd");
+        $dumpvars(0, PIXEL_ARRAY_BUS_tb);
         INPUT = 69;
         #sim_period
         READ_CLK = 1;

@@ -14,8 +14,8 @@ PIXEL_ARRAY_READ_POINTER #(.HEIGHT(HEIGHT)) parp1(
 
 
 initial begin
-    $dumpfile("simulation/pixelArrayReadPointer.vcd");
-    $dumpvars(0, pixelArrayReadPointer_tb);
+    $dumpfile("simulation/PIXEL_ARRAY_READ_POINTER_tb.vcd");
+    $dumpvars(0, PIXEL_ARRAY_READ_POINTER_tb);
     #sim_period
     for (CONTROL = 0;CONTROL < HEIGHT; CONTROL++) begin
         if (CONTROL == 0) ENABLE = 1;
