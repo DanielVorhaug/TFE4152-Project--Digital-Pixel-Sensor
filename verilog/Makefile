@@ -32,6 +32,10 @@ ysfsm:	# This might need changes as we changed the folder structure from Wulfern
 	yosys pixelSensorFsm.ys
 	dot pixelSensorFsm.dot -Tpng > pixelSensorFsm.png
 
+synth:
+	yosys pixelArrayCounter.ys
+	dot pixelArrayCounter.dot -Tpng > pixelArrayCounter.png
+
 clean:
 	-rm synthesis/pixelArray
 	-rm synthesis/pixelArrayCounter
