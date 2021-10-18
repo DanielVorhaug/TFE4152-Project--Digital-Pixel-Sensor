@@ -10,7 +10,7 @@ parameter integer OUTPUT_BUS_PIXEL_WIDTH = 2;
 parameter integer BIT_DEPTH = 8;
 integer output_bus_width = OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH;
 
-integer n = 0;
+logic [$clog2(WIDTH)-1:0] n = 0; // maybe -1
 
 logic [WIDTH*8-1:0] buffer = '0;
 
@@ -19,9 +19,17 @@ always_ff @(posedge READ_CLK) begin
 end
 
 always_ff @(posedge WRITE_CLK) begin //Potential code for sequential read
-    OUT = buffer[output_bus_width*n - 1: output_bus_width*(n-1)];
-    n++;
-    if (OUTPUT_BUS_PIXEL_WIDTH*n==WIDTH) n = 0;
+    generate for (int i=1; i<(WIDTH/OUTPUT_BUS_PIXEL_WIDTH)+1; i=i+1) begin: 
+            if (n==i) OUT <= buffer[output_bus_width * i - 1 : output_bus_width * (i-1)];
+        end 
+    endgenerate
+    if(n==WIDTH/OUTPUT_BUS_PIXEL_WIDTH + 1) n = 1;
+
+
+    // if (n==)
+    // OUT <= buffer[15: 0];
+    // kattepus <= kattepus+1;
+    // if (OUTPUT_BUS_PIXEL_WIDTH*kattepus==WIDTH) kattepus <= 0;
 end 
 
 // always_comb begin
