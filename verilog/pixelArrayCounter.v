@@ -5,6 +5,8 @@ module PIXEL_ARRAY_COUNTER (
     output logic [7:0] DATA 
 );    
 
+    parameter BIT_DEPTH = 8;
+
     logic [7:0] counter = '0;
 
     always_comb begin
