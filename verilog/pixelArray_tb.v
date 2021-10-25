@@ -30,7 +30,7 @@ module pixelArray_tb;
         .POWER_ENABLE (),
         .WRITE_ENABLE (write_enable),
         .COUNTER_RESET (reset),
-        .COUNTER_CLOCK (clk),
+        .COUNTER_CLOCK (ana_ramp),
         .ANALOG_RAMP (ana_ramp),
         .RESET (),
         .ERASE (),
@@ -71,7 +71,7 @@ module pixelArray_tb;
             #sim_period
                 expose = 0;
                 convert = 1;
-            #sim_period
+            #sim_end
                 convert = 0;
             #clk_period
                 write_enable = 0;
