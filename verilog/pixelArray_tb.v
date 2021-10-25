@@ -10,18 +10,12 @@ module pixelArray_tb;
     parameter integer sim_end = clk_period*2400;
     always #clk_period clk=~clk;
 
-    parameter WIDTH = 3;
-    parameter HEIGHT = 3;
-    parameter OUTPUT_BUS_PIXEL_WIDTH = 3;
-    parameter BIT_DEPTH = 10;
-
-    parameter real dv_pixel = 0.5;  //Set the expected photodiode current (0-1)
-
     parameter WIDTH = 2;
     parameter HEIGHT = 2;
     parameter OUTPUT_BUS_PIXEL_WIDTH = 2;
     parameter BIT_DEPTH = 8;
 
+    parameter real dv_pixel = 0.5;  //Set the expected photodiode current (0-1)
 
     // Analog signals
     logic ana_bias1;            // Amount of posedges decides how low photodiode voltage is
