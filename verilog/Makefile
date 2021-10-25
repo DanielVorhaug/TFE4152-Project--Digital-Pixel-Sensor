@@ -42,6 +42,7 @@ clean:
 	-rm synthesis/pixelSensor
 	-rm synthesis/pixelArrayReadPointer
 	-rm synthesis/pixelArrayBus
+	-rm synthesis/pixelArrayMemoryController
 	-rm simulation/*.vcd
 	-rm simulation/*.gtkw
 
