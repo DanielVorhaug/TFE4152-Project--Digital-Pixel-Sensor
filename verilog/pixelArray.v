@@ -61,7 +61,7 @@ module PIXEL_ARRAY(
         .OUT(DATA_OUT)
     );
 
-    PIXEL_SENSOR #() ps1 (
+    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps1 (
         .VBN1(VBN1),
         .RAMP(ANALOG_RAMP),
         .RESET(RESET),       // Reset voltage in paper
@@ -70,7 +70,7 @@ module PIXEL_ARRAY(
         .READ(row_select[0]),        // Read in paper
         .DATA(data[7:0])
     );
-    PIXEL_SENSOR #() ps2 (
+    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps2 (
         .VBN1(VBN1),
         .RAMP(ANALOG_RAMP),
         .RESET(RESET),       // Reset voltage in paper
@@ -79,7 +79,7 @@ module PIXEL_ARRAY(
         .READ(row_select[0]),        // Read in paper
         .DATA(data[15:8])
     );
-    PIXEL_SENSOR #() ps3 (
+    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps3 (
         .VBN1(VBN1),
         .RAMP(ANALOG_RAMP),
         .RESET(RESET),       // Reset voltage in paper
@@ -88,7 +88,7 @@ module PIXEL_ARRAY(
         .READ(row_select[1]),        // Read in paper
         .DATA(data[7:0])
     );
-    PIXEL_SENSOR #() ps4 (
+    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps4 (
         .VBN1(VBN1),
         .RAMP(ANALOG_RAMP),
         .RESET(RESET),       // Reset voltage in paper
