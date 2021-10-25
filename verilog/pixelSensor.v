@@ -35,7 +35,7 @@
 //----------------------------------------------------------------
 module PIXEL_SENSOR
   (
-   input logic      VBN1,
+   input logic      VBN1,        // Amount of posedges decides how low photodiode is
    input logic      RAMP,
    input logic      RESET,       // Reset voltage in paper, this variable is not used
    input logic      ERASE,       // Pixel reset in paper
