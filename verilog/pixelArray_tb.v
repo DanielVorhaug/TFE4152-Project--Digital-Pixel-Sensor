@@ -230,30 +230,6 @@ module pixelArray_tb;
             $dumpfile("simulation/pixelArray_tb.vcd");
             $dumpvars(0,pixelArray_tb);
             
-            #sim_period
-                write_enable = 0;
-            #sim_period
-                write_enable = 1;
-
-            #sim_end
-                reset = 1;
-            #clk_period
-                reset = 0;
-
-            #sim_period
-                write_enable = 0;
-            #sim_period
-                write_enable = 1;
-                expose = 1;
-            #sim_period
-                expose = 0;
-                convert = 1;
-            #sim_end
-                convert = 0;
-            #clk_period
-                write_enable = 0;
-            #clk_period
-                read = 1;
             #sim_end
                 $stop;
 
