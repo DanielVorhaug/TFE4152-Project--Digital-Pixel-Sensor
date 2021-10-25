@@ -17,13 +17,13 @@ module pixelArray_tb;
     logic ana_ramp;
     logic read_clk;
 
-    logic expose;
-    logic read;
-    logic convert;
+    logic expose = 0;
+    logic read = 0;
+    logic convert = 0;
     tri[7:0] pixData; //  We need this to be a wire, because we're tristating it
    
-    assign anaRamp = convert ? clk : 0;
-    assign anaBias1 = expose ? clk : 0;
+    assign ana_ramp = convert ? clk : 0;
+    assign ana_bias1 = expose ? clk : 0;
     assign read_clk = read ? clk : 0;
 
     PIXEL_ARRAY #() pa1(
