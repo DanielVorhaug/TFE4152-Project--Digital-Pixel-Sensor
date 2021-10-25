@@ -2,12 +2,12 @@
 module PIXEL_ARRAY_COUNTER (
     input logic COUNTER_RESET,
     input logic COUNTER_CLOCK,
-    output logic [7:0] DATA 
+    output logic [BIT_DEPTH - 1:0] DATA 
 );    
 
     parameter BIT_DEPTH = 8;
 
-    logic [7:0] counter = '0;
+    logic [BIT_DEPTH - 1:0] counter = '0;
 
     always_comb begin
         counter = DATA + 1;

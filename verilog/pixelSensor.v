@@ -55,7 +55,7 @@ module PIXEL_SENSOR
    logic            cmp;
    real             adc;
 
-   logic [7:0]      p_data;
+   logic [BIT_DEPTH:0]      p_data;
 
    //----------------------------------------------------------------
    // ERASE

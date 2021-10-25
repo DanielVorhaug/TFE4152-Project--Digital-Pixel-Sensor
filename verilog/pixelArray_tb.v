@@ -10,6 +10,11 @@ module pixelArray_tb;
     parameter integer sim_end = clk_period*2400;
     always #clk_period clk=~clk;
 
+    parameter WIDTH = 3;
+    parameter HEIGHT = 3;
+    parameter OUTPUT_BUS_PIXEL_WIDTH = 3;
+    parameter BIT_DEPTH = 10;
+
     parameter real dv_pixel = 0.5;  //Set the expected photodiode current (0-1)
 
     //Analog signals
@@ -26,7 +31,7 @@ module pixelArray_tb;
     assign ana_bias1 = expose ? clk : 0;
     assign read_clk = read ? clk : 0;
 
-    PIXEL_ARRAY #() pa1(
+    PIXEL_ARRAY #(.WIDTH(WIDTH), .HEIGHT(HEIGHT), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), .BIT_DEPTH(BIT_DEPTH)) pa1(
         .POWER_ENABLE (),
         .WRITE_ENABLE (write_enable),
         .COUNTER_RESET (reset),

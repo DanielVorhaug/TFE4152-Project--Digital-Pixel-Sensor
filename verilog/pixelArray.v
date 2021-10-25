@@ -15,7 +15,7 @@ module PIXEL_ARRAY(
     input logic VBN1,
 
     //inout wire [7:0] DATA,    //Will have to expand this to account for more pixels
-    output logic [WIDTH*OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] DATA_OUT
+    output logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] DATA_OUT
 
 );
     parameter WIDTH = 2;
@@ -36,8 +36,12 @@ module PIXEL_ARRAY(
         .COUNTER_CLOCK (COUNTER_CLOCK),
         .DATA (counter) );
 
-    assign data[7:0] = (WRITE_ENABLE) ? counter : 'Z;
-    assign data[15:8] = (WRITE_ENABLE) ? counter : 'Z;
+    genvar i;
+    generate
+       for (i = 0; i < WIDTH; i = i + 1) begin
+           assign data[BIT_DEPTH*(i+1) - 1:BIT_DEPTH*i] = WRITE_ENABLE ? counter : 'Z;
+       end 
+    endgenerate
 
     PIXEL_ARRAY_MEMORY_CONTROLLER #(.HEIGHT(HEIGHT), .WIDTH(WIDTH), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH)) pamc1(
         .SYSTEM_CLK(SYSTEM_CLK),
@@ -55,65 +59,29 @@ module PIXEL_ARRAY(
         .ROW_SELECT(row_select)
     );
 
-    PIXEL_ARRAY_BUS #(.BIT_DEPTH(BIT_DEPTH), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH)) pab1(
+    PIXEL_ARRAY_BUS #(.BIT_DEPTH(BIT_DEPTH), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), .WIDTH(WIDTH)) pab1(
         .DATA(data),
         .READ_CLK(read_clk_out),
         .OUT(DATA_OUT)
     );
 
-    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps1 (
-        .VBN1(VBN1),
-        .RAMP(ANALOG_RAMP),
-        .RESET(RESET),       // Reset voltage in paper
-        .ERASE(ERASE),       // Pixel reset in paper
-        .EXPOSE(EXPOSE),      // PG in paper
-        .READ(row_select[0]),        // Read in paper
-        .DATA(data[7:0])
-    );
-    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps2 (
-        .VBN1(VBN1),
-        .RAMP(ANALOG_RAMP),
-        .RESET(RESET),       // Reset voltage in paper
-        .ERASE(ERASE),       // Pixel reset in paper
-        .EXPOSE(EXPOSE),      // PG in paper
-        .READ(row_select[0]),        // Read in paper
-        .DATA(data[15:8])
-    );
-    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps3 (
-        .VBN1(VBN1),
-        .RAMP(ANALOG_RAMP),
-        .RESET(RESET),       // Reset voltage in paper
-        .ERASE(ERASE),       // Pixel reset in paper
-        .EXPOSE(EXPOSE),      // PG in paper
-        .READ(row_select[1]),        // Read in paper
-        .DATA(data[7:0])
-    );
-    PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps4 (
-        .VBN1(VBN1),
-        .RAMP(ANALOG_RAMP),
-        .RESET(RESET),       // Reset voltage in paper
-        .ERASE(ERASE),       // Pixel reset in paper
-        .EXPOSE(EXPOSE),      // PG in paper
-        .READ(row_select[1]),        // Read in paper
-        .DATA(data[15:8])
-    );
 
-    // PIXEL_SENSOR #() [HEIGHT-1:0]ps[WIDTH-1:0] (
-    //     input logic      VBN1,
-    //     .RAMP(ANALOG_RAMP),
-    //     .RESET(RESET),       // Reset voltage in paper
-    //     .ERASE(ERASE),       // Pixel reset in paper
-    //     .EXPOSE(EXPOSE),      // PG in paper
-    //     .READ(),        // Read in paper
-    //     inout [7:0] DATA
-    // );
-    // genvar h, w;
-    // generate
-    //     for (h = 0; h < HEIGHT; h++)begin
-    //         for(w = 0; w < WIDTH; w++)begin
-    //             PIXEL_SENSOR #() ps
-    //         end
-    //     end 
-    // endgenerate
+    genvar j; //j is the column
+    genvar k; //k is the row
+    generate
+        for(j = 0; j < WIDTH; j = j + 1)begin
+            for(k = 0; k < HEIGHT; k = k + 1)begin
+                PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps (
+                    .VBN1(VBN1),
+                    .RAMP(ANALOG_RAMP),
+                    .RESET(RESET),        // Reset voltage in paper
+                    .ERASE(ERASE),        // Pixel reset in paper
+                    .EXPOSE(EXPOSE),      // PG in paper
+                    .READ(row_select[k]), // Read in paper
+                    .DATA(data[BIT_DEPTH*(j+1)-1:BIT_DEPTH*(j)])
+                );
+            end
+        end
+    endgenerate
 
 endmodule
