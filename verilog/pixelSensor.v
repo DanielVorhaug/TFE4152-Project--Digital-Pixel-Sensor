@@ -37,7 +37,7 @@ module PIXEL_SENSOR
   (
    input logic      VBN1,
    input logic      RAMP,
-   input logic      RESET,       // Reset voltage in paper
+   input logic      RESET,       // Reset voltage in paper, this variable is not used
    input logic      ERASE,       // Pixel reset in paper
    input logic      EXPOSE,      // PG in paper
    input logic      READ,        // Read in paper
