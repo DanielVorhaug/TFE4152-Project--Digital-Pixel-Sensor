@@ -31,8 +31,9 @@ module pixelArray_tb;
     logic expose = 0;
     logic read_reset = 0;
     logic read = 0;
-
-    tri[7:0] pixData; //  We need this to be a wire, because we're tristating it
+    logic data_out_clk;
+    logic [WIDTH*BIT_DEPTH-1:0] data_out;
+    
    
     assign ana_ramp = convert ? clk : 0;
     assign ana_bias1 = expose ? clk : 0;
@@ -51,7 +52,8 @@ module pixelArray_tb;
         .READ_RESET (read_reset),
         .READ_CLK_IN (read),
         .VBN1 (ana_bias1),
-        .DATA_OUT ()
+        .DATA_OUT_CLK (data_out_clk),
+        .DATA_OUT (data_out)        
         );
 
     

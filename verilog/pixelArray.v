@@ -15,6 +15,7 @@ module PIXEL_ARRAY(
     input logic VBN1,
 
     //inout wire [7:0] DATA,    //Will have to expand this to account for more pixels
+    output logic DATA_OUT_CLK,
     output logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] DATA_OUT
 
 );
@@ -26,7 +27,6 @@ module PIXEL_ARRAY(
     wire [BIT_DEPTH*WIDTH - 1:0] data;
     logic [BIT_DEPTH - 1:0] counter;// = '0;
     logic read_clk_out;
-    logic write_clk_out;
     logic [$clog2(HEIGHT):0] memory_row;
     logic memory_read_enable;
     logic [HEIGHT-1: 0] row_select;
@@ -48,7 +48,7 @@ module PIXEL_ARRAY(
         .READ_RESET(READ_RESET),
         .READ_CLK_IN(READ_CLK_IN),
         .READ_CLK_OUT(read_clk_out),
-        .WRITE_CLK_OUT(write_clk_out),
+        .WRITE_CLK_OUT(DATA_OUT_CLK),
         .MEMORY_ROW(memory_row),
         .MEMORY_READ_ENABLE(memory_read_enable)
     );
