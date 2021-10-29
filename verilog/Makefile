@@ -24,6 +24,10 @@ pamc:
 	iverilog -g2012 -o synthesis/pixelArrayMemoryController -c pixelArrayMemoryController.fl
 	vvp -n synthesis/pixelArrayMemoryController
 
+pstate:
+	iverilog -g2012 -o synthesis/pixelState -c pixelState.fl
+	vvp -n synthesis/pixelState
+
 psfsm:
 	iverilog -g2012 -o synthesis/pixelSensorFsm -c pixelSensorFsm.fl
 	vvp -n synthesis/pixelSensorFsm
@@ -43,6 +47,7 @@ clean:
 	-rm synthesis/pixelArrayReadPointer
 	-rm synthesis/pixelArrayBus
 	-rm synthesis/pixelArrayMemoryController
+	-rm synthesis/pixelState
 	-rm simulation/*.vcd
 	-rm simulation/*.gtkw
 
