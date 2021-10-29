@@ -79,7 +79,7 @@ module pixelArray_tb;
             ERASE: begin
                 power_enable <= 0;
                 write_enable <= 0;
-                counter_reset <= 0;
+                counter_reset <= 1;
                 reset_voltage <= 0;
                 erase <= 1;
                 expose <= 0;
@@ -169,8 +169,6 @@ module pixelArray_tb;
                 if(counter == c_convert) begin
                     next_state <= READ;
                     state <= IDLE;
-
-                    counter_reset <= 1;
                 end
             end
             READ:
