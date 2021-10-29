@@ -36,8 +36,8 @@ module pixelTop_tb;
 
             #clk_period  system_reset=0;
 
-            $dumpfile("simulation/pixelState_tb.vcd");
-            $dumpvars(0,pixelState_tb);
+            $dumpfile("simulation/pixelTop_tb.vcd");
+            $dumpvars(0,pixelTop_tb);
             
             #sim_end
                 $stop;
