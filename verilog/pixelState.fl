@@ -1,3 +1,9 @@
 
 pixelState.v
 pixelState_tb.v
+pixelArray.v
+pixelArrayCounter.v
+pixelArrayBus.v
+pixelArrayMemoryController.v
+pixelArrayReadPointer.v
+pixelSensor.v

@@ -48,6 +48,32 @@ module pixelState_tb;
             .READ_CLK_IN (read_clk_in),
             .VBN1 (vbn1)                        // ana_bias1
     );
+
+    logic data_out_clk;
+    logic [WIDTH*BIT_DEPTH-1:0] data_out;
+
+    PIXEL_ARRAY #(
+            .WIDTH(WIDTH),
+            .HEIGHT(HEIGHT), 
+            .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), 
+            .BIT_DEPTH(BIT_DEPTH)
+        ) 
+        pa1(
+            .POWER_ENABLE (power_enable),
+            .WRITE_ENABLE (write_enable),
+            .COUNTER_RESET (counter_reset),
+            .COUNTER_CLOCK (counter_clock),
+            .ANALOG_RAMP (counter_clock),
+            .RESET (reset),
+            .ERASE (erase),
+            .EXPOSE (expose),
+            .SYSTEM_CLK (system_clk),
+            .READ_RESET (read_reset),
+            .READ_CLK_IN (read_clk_in),
+            .VBN1 (vbn1),
+            .DATA_OUT_CLK (data_out_clk),
+            .DATA_OUT (data_out)        
+        );
     
 
 
