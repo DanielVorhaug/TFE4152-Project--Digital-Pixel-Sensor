@@ -60,7 +60,7 @@ module PIXEL_TOP (
             .RESET (reset),
             .ERASE (erase),
             .EXPOSE (expose),
-            .SYSTEM_CLK (system_clk),
+            .SYSTEM_CLK (SYSTEM_CLK),
             .READ_RESET (read_reset),
             .READ_CLK_IN (read_clk_in),
             .VBN1 (vbn1),
