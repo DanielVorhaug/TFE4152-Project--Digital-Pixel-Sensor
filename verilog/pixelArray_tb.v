@@ -39,7 +39,7 @@ module pixelArray_tb;
     assign ana_bias1 = expose ? clk : 0;
     //assign read_clk = read ? clk : 0;
 
-    PIXEL_ARRAY #(.WIDTH(WIDTH), .HEIGHT(HEIGHT), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), .BIT_DEPTH(BIT_DEPTH)) pa1(
+    PIXEL_ARRAY #(.WIDTH(WIDTH), .HEIGHT(HEIGHT), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), .BIT_DEPTH(BIT_DEPTH), .dv_pixel(dv_pixel)) pa1(
         .POWER_ENABLE (power_enable),
         .WRITE_ENABLE (write_enable),
         .COUNTER_RESET (counter_reset),

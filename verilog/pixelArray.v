@@ -22,6 +22,7 @@ module PIXEL_ARRAY(
     parameter HEIGHT = 2;
     parameter OUTPUT_BUS_PIXEL_WIDTH = 2;
     parameter BIT_DEPTH = 8;
+    parameter dv_pixel = 0.5;
 
     wire [BIT_DEPTH*WIDTH - 1:0] data;
     logic [BIT_DEPTH - 1:0] counter;// = '0;
@@ -70,7 +71,7 @@ module PIXEL_ARRAY(
     generate
         for(j = 0; j < WIDTH; j = j + 1)begin
             for(k = 0; k < HEIGHT; k = k + 1)begin
-                PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH)) ps (
+                PIXEL_SENSOR #(.BIT_DEPTH(BIT_DEPTH), .dv_pixel(dv_pixel)) ps (
                     .VBN1(VBN1),
                     .RAMP(ANALOG_RAMP),
                     .RESET(RESET),        // Reset voltage in paper
