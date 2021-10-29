@@ -23,7 +23,7 @@ module pixelTop_tb;
             .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH),
             .BIT_DEPTH(BIT_DEPTH)
         ) 
-        pstate(
+        ptop(
             .SYSTEM_CLK (system_clk),
             .SYSTEM_RESET (system_reset),
             .DATA_OUT_CLK (data_out_clk),
