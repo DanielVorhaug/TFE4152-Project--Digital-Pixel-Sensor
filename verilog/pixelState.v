@@ -37,7 +37,7 @@ module PIXEL_STATE_MACHINE (
     logic               convert = 0;
     logic               convert_stop;
     logic [2:0]         state,next_state;   //States
-    integer             counter;            //Delay counter in state machine
+    logic [8:0]         counter;            //Delay counter in state machine
 
     //State duration in clock cycles
     parameter integer c_erase = 5;
