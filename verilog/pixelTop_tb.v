@@ -32,12 +32,14 @@ module pixelTop_tb;
 
     initial
         begin
-            system_reset = 1;
-
-            #clk_period  system_reset=0;
+            
 
             $dumpfile("simulation/pixelTop_tb.vcd");
             $dumpvars(0,pixelTop_tb);
+
+            system_reset = 1;
+
+            #clk_period  system_reset=0;
             
             #sim_end
                 $stop;
