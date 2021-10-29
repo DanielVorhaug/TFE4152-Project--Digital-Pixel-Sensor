@@ -29,7 +29,7 @@ pstate:
 	vvp -n synthesis/pixelState
 
 pt:
-	iverilog -g2012 -o synthesis/pixelTop -c pixelTop
+	iverilog -g2012 -o synthesis/pixelTop -c pixelTop.fl
 	vvp -n synthesis/pixelTop
 
 psfsm:
