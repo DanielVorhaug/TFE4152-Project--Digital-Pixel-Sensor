@@ -22,3 +22,5 @@ verilog/synthesis/pixelArrayMemoryController
 verilog/toDo.txt
 
 verilog/synthesis/pixelState
+
+verilog/synthesis/pixelTop
