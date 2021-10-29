@@ -23,8 +23,7 @@ module PIXEL_TOP (
     logic read_clk_in;
     logic vbn1;
 
-    PIXEL_STATE_MACHINE 
-        #(
+    PIXEL_STATE_MACHINE #(
             .WIDTH(WIDTH),
             .HEIGHT(HEIGHT),
             .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH),
