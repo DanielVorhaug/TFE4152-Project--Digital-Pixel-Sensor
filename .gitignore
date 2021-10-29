@@ -1,4 +1,22 @@
 
-verilog/pixelSensor_tb.vcd
+*.gtkw
+
+*.vcd
+
+verilog/synthesis/pixelArray
+
+verilog/synthesis/pixelSensor
 
 verilog/pixelSensor
+
+verilog/pixelArray
+
+verilog/synthesis/pixelArrayCounter
+
+verilog/synthesis/pixelArrayBus
+
+verilog/synthesis/pixelArrayReadPointer
+
+verilog/synthesis/pixelArrayMemoryController
+
+verilog/toDo.txt

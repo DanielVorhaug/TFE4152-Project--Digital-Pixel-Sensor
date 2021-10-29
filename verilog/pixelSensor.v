@@ -35,25 +35,27 @@
 //----------------------------------------------------------------
 module PIXEL_SENSOR
   (
-   input logic      VBN1,
+   input logic      VBN1,        // Amount of posedges decides how low photodiode is
    input logic      RAMP,
-   input logic      RESET,       // Reset voltage in paper
+   input logic      RESET,       // Reset voltage in paper, this variable is not used
    input logic      ERASE,       // Pixel reset in paper
    input logic      EXPOSE,      // PG in paper
    input logic      READ,        // Read in paper
-   inout [7:0] DATA
+   inout [BIT_DEPTH - 1:0] DATA
 
    );
 
-   real             v_erase = 1.2;
-   real             lsb = v_erase/255;
+   parameter integer BIT_DEPTH = 8;
+
+   real             v_erase = 2.0;
+   real             lsb = v_erase/(2**BIT_DEPTH - 1);
    parameter real   dv_pixel = 0.5;
 
    real             tmp;
    logic            cmp;
    real             adc;
 
-   logic [7:0]      p_data;
+   logic [BIT_DEPTH:0]      p_data;
 
    //----------------------------------------------------------------
    // ERASE
@@ -100,6 +102,6 @@ module PIXEL_SENSOR
    // Readout
    //----------------------------------------------------------------
    // Assign data to bus when pixRead = 0
-   assign DATA = READ ? p_data : 8'bZ;
+   assign DATA = READ ? p_data : 'Z;
 
 endmodule // re_control
