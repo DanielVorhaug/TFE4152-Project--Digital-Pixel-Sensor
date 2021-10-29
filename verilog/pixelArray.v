@@ -14,7 +14,6 @@ module PIXEL_ARRAY(
     input logic READ_CLK_IN,
     input logic VBN1,
 
-    //inout wire [7:0] DATA,    //Will have to expand this to account for more pixels
     output logic DATA_OUT_CLK,
     output logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] DATA_OUT
 
