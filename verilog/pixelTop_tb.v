@@ -5,7 +5,7 @@ module pixelTop_tb;
     logic system_reset = 0;
     parameter integer clk_period = 500;
     parameter integer sim_period = clk_period *10.2;
-    parameter integer sim_end = clk_period*2400;
+    parameter integer sim_end = clk_period*5000;
     always #clk_period system_clk=~system_clk;
 
     parameter WIDTH = 2;
