@@ -28,6 +28,10 @@ pstate:
 	iverilog -g2012 -o synthesis/pixelState -c pixelState.fl
 	vvp -n synthesis/pixelState
 
+pt:
+	iverilog -g2012 -o synthesis/pixelTop -c pixelTop
+	vvp -n synthesis/pixelTop
+
 psfsm:
 	iverilog -g2012 -o synthesis/pixelSensorFsm -c pixelSensorFsm.fl
 	vvp -n synthesis/pixelSensorFsm
@@ -48,6 +52,7 @@ clean:
 	-rm synthesis/pixelArrayBus
 	-rm synthesis/pixelArrayMemoryController
 	-rm synthesis/pixelState
+	-rm synthesis/pixelTop
 	-rm simulation/*.vcd
 	-rm simulation/*.gtkw
 
