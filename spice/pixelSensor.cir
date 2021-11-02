@@ -77,17 +77,21 @@ Rphoto VPG VSS 1G
 
 .SUBCKT COMP VCMP_OUT VSTORE VRAMP VDD VSS
 
-mp1 VP VP VDD VDD pmos w=0.5u l=0.5u
-mp2 VO VP VDD VDD pmos w=0.5u l=0.5u
 
-mn1 VO VSTORE VS VS nmos w=0.5u l=0.15u
-mn2 VP VRAMP VS VS nmos w=0.5u l=0.15u
+mp1 VP VP VDD VDD pmos w=0.5u l=0.5u m=2
+mp2 VO VP VDD VDD pmos w=0.5u l=0.5u m=2
 
-I3 VS 0 dc 10u
-*The last nmos is just a part of a current mirror, so modeling as a current source makes sense
+mn1 VO VRAMP VS VS nmos w=0.5u l=0.15u
+mn2 VP VSTORE VS VS nmos w=0.5u l=0.15u
 
-mp3 VO2 VO VDD VDD pmos w=0.5u l=0.5u
-mn3 VO2 VO VSS VSS nmos w=0.5u l=0.15u
+I3 0 VBN1 dc 10u
+*The last transistor is part of a current mirror, so modeling it as a current source makes sense
+
+mb1 VBN1 VBN1 VSS VSS nmos w=0.5u l=0.15u m=2
+mb2 VS VBN1 VSS VSS nmos w=0.5u l=0.15u m=2
+
+mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=5
+mn3 VO2 VBN1 VSS VSS nmos w=0.5u l=0.15u
 
 *INVERTER
 mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.5u
