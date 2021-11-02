@@ -77,8 +77,24 @@ Rphoto VPG VSS 1G
 
 .SUBCKT COMP VCMP_OUT VSTORE VRAMP VDD VSS
 
+mp1 VP VP VDD VDD pmos w=0.5u l=0.5u
+mp2 VO VP VDD VDD pmos w=0.5u l=0.5u
+
+mn1 VO VSTORE VS VS nmos w=0.5u l=0.15u
+mn2 VP VRAMP VS VS nmos w=0.5u l=0.15u
+
+I3 VS 0 dc 10u
+*The last nmos is just a part of a current mirror, so modeling as a current source makes sense
+
+mp3 VO2 VO VDD VDD pmos w=0.5u l=0.5u
+mn3 VO2 VO VSS VSS nmos w=0.5u l=0.15u
+
+*INVERTER
+mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.5u
+mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
+
 * Model comparator
-BC1 VCMP_OUT VSS V = ((atan(100000*(V(VSTORE) - V(VRAMP)))) + 1.58)/3.14*1.5
+*BC1 VCMP_OUT VSS V = ((atan(100000*(V(VSTORE) - V(VRAMP)))) + 1.58)/3.14*1.5
 
 
 .ENDS
