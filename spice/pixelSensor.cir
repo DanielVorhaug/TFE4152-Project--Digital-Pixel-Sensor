@@ -66,10 +66,17 @@ C1 VSTORE VSS 100f
 Rleak VSTORE VSS 100T
 
 * Switch to reset voltage on capacitor
-BR1 VRESET VSTORE I=V(ERASE)*V(VRESET,VSTORE)/1k
+*BR1 VRESET VSTORE I=V(ERASE)*V(VRESET,VSTORE)/1k
+MnReset VRESET VERASE VSTORE VSS nmos w=0.5u l=0.15u
+XI1 VERASE VERASE_N VDD VSS
+MpReset VSTORE VERASE_N VRESET VDD pmos w=0.5u l=0.15u m=4
+*Might want to drop m = 4 on the pmos
 
 * Switch to expose pixel
-BR2 VPG VSTORE I=V(EXPOSE)*V(VSTORE,VPG)/1k
+*BR2 VPG VSTORE I=V(EXPOSE)*V(VSTORE,VPG)/1k
+MnExpose VPG VEXPOSE VSTORE VSS nmos w=0.5u l=0.15u
+XI2 VEXPOSE VEXPOSE_N VDD VSS
+MpExpose VSTORE VEXPOSE_N VPG VDD pmos w=0.5u l=0.15u m=4
 
 * Model photocurrent
 Rphoto VPG VSS 1G
@@ -101,4 +108,10 @@ mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
 *BC1 VCMP_OUT VSS V = ((atan(100000*(V(VSTORE) - V(VRAMP)))) + 1.58)/3.14*1.5
 
 
+.ENDS
+
+.SUBCKT INVERTER VIN VOUT VDD VSS
+*Just a simple t2 inverter
+M1 VOUT VIN VDD VDD pmos w=0.5u l=0.15u
+M2 VOUT VIN VSS VSS nmos w=0.5u l=0.15u
 .ENDS
