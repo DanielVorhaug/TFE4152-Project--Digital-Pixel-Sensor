@@ -15,19 +15,19 @@ always_ff @(posedge READ_CLK) begin
 end
 
 always_ff @(posedge WRITE_CLK) begin
-    OUT = buffer[BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH-1: 0];
+    OUT <= buffer[BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH-1: 0];
 end
 
 genvar i;
 generate for(i = 0; i < WIDTH/OUTPUT_BUS_PIXEL_WIDTH-1; i++) begin
         always_ff @(posedge WRITE_CLK) begin
-            buffer[BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*(i+1)-1:BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*i] = buffer[BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*(i+2)-1:BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*(i+1)];
+            buffer[BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*(i+1)-1:BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*i] <= buffer[BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*(i+2)-1:BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH*(i+1)];
         end
     end
 endgenerate
 
 always_ff @(posedge WRITE_CLK) begin
-    buffer[WIDTH*BIT_DEPTH-1:WIDTH*BIT_DEPTH-OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH] = '0;
+    buffer[WIDTH*BIT_DEPTH-1:WIDTH*BIT_DEPTH-OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH] <= '0;
 end
 
 
