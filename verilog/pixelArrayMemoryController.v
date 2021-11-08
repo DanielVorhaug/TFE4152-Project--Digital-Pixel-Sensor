@@ -24,7 +24,7 @@ module PIXEL_ARRAY_MEMORY_CONTROLLER (
 
     always_ff @(posedge READ_CLK_IN) begin
         state_enable <= 1;
-        state <= control_clk;
+        state <= 0;
         MEMORY_READ_ENABLE <= 1;
         MEMORY_ROW = -1;
     end
@@ -45,8 +45,6 @@ module PIXEL_ARRAY_MEMORY_CONTROLLER (
 
             read_to_buffer:
             begin
-                write_out_enable <= 0;
-
                 READ_CLK_OUT <= 1;
                 state <= write_out;
                 write_number <= 0;
@@ -66,9 +64,9 @@ module PIXEL_ARRAY_MEMORY_CONTROLLER (
 
             done:
             begin
-                MEMORY_READ_ENABLE = 0;
-                MEMORY_ROW = -1;
-                state_enable = 0;
+                MEMORY_READ_ENABLE <= 0;
+                MEMORY_ROW <= -1;
+                state_enable <= 0;
             end
 
             default: 
