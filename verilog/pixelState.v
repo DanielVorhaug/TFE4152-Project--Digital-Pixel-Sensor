@@ -43,7 +43,7 @@ module PIXEL_STATE_MACHINE (
     parameter integer c_erase = 5;
     parameter integer c_expose = 255;
     parameter integer c_convert = 255;
-    parameter integer c_read = 5;
+    parameter integer c_read = (2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT + 1;
 
     // Control the output signals
     always_ff @(negedge SYSTEM_CLK ) begin

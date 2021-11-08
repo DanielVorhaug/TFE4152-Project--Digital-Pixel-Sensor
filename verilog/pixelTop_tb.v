@@ -9,7 +9,7 @@ module pixelTop_tb;
     always #clk_period system_clk=~system_clk;
 
     parameter WIDTH = 2;
-    parameter HEIGHT = 2;
+    parameter HEIGHT = 3;
     parameter OUTPUT_BUS_PIXEL_WIDTH = 2;
     parameter BIT_DEPTH = 8;
 
