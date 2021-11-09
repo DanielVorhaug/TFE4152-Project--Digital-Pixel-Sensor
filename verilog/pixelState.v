@@ -30,14 +30,16 @@ module PIXEL_STATE_MACHINE (
     assign VBN1 = EXPOSE ? SYSTEM_CLK : 0; // Amount of posedges decides how low photodiode voltage is
     
     //------------------------------------------------------------
-   // State Machine
-   //------------------------------------------------------------
-   parameter STATE_ERASE=0, STATE_EXPOSE=1, STATE_CONVERT=2, STATE_READ=3, STATE_IDLE=4;
+    // State Machine
+    //------------------------------------------------------------
+    parameter STATE_ERASE=0, STATE_EXPOSE=1, STATE_CONVERT=2, STATE_READ=3, STATE_IDLE=4;
+        
+    parameter counter_size = ($clog2((2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT)+1) > (BIT_DEPTH-1) ? ($clog2((2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT)+1) : (BIT_DEPTH-1);
 
-    logic                                                               convert = 0;
-    logic                                                               convert_stop;
-    logic [2:0]                                                         state,next_state;   //States
-    logic [$clog2((2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT)+1:0]         counter;            //Delay counter in state machine, Assumes the longest state will be read
+    logic                   convert = 0;
+    logic                   convert_stop;
+    logic [2:0]             state,next_state;   //States
+    logic [counter_size:0]  counter;            //Delay counter in state machine, Assumes the longest state will be read
     //logic [BIT_DEPTH-1:0]                                               counter;            //Delay counter in state machine, Assumes the longest state will be convert
 
     //State duration in clock cycles
