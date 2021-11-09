@@ -40,7 +40,6 @@ module PIXEL_STATE_MACHINE (
     logic                   convert_stop;
     logic [2:0]             state,next_state;   //States
     logic [counter_size:0]  counter;            //Delay counter in state machine, Assumes the longest state will be read
-    //logic [BIT_DEPTH-1:0]                                               counter;            //Delay counter in state machine, Assumes the longest state will be convert
 
     //State duration in clock cycles
     parameter integer c_erase = 5;
