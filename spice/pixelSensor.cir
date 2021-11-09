@@ -81,7 +81,10 @@ XI2 EXPOSE EXPOSE_N VDD VSS INVERTER
 MpExpose VSTORE EXPOSE_N VPG VDD pmos w=0.5u l=0.15u m=4
 
 * Model photocurrent
-Rphoto VPG VSS 1G
+* Set current source between 10n and 22n
+* to test different light levels
+Iphoto VSS VPG dc 17n
+Rphoto VPG VSS 50Meg
 .ENDS
 
 .SUBCKT COMP VCMP_OUT VSTORE VRAMP VDD VSS
