@@ -8,13 +8,13 @@ module pixelTop_tb;
     parameter integer sim_end = clk_period*5000;
     always #clk_period system_clk=~system_clk;
 
-    parameter WIDTH = 2;
-    parameter HEIGHT = 2;
-    parameter OUTPUT_BUS_PIXEL_WIDTH = 2;
-    parameter BIT_DEPTH = 8;
+    parameter WIDTH = 100;
+    parameter HEIGHT = 100;
+    parameter OUTPUT_BUS_PIXEL_WIDTH = 10;
+    parameter BIT_DEPTH = 10;
 
     logic data_out_clk;
-    logic [WIDTH*BIT_DEPTH-1:0] data_out;
+    logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] data_out;
 
     PIXEL_TOP 
         #(
@@ -32,7 +32,6 @@ module pixelTop_tb;
 
     initial
         begin
-            
 
             $dumpfile("simulation/pixelTop_tb.vcd");
             $dumpvars(0,pixelTop_tb);
@@ -41,6 +40,11 @@ module pixelTop_tb;
 
             #clk_period  system_reset=0;
             
+            #sim_end
+            #sim_end
+            #sim_end
+            #sim_end
+            #sim_end
             #sim_end
                 $stop;
 

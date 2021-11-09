@@ -62,7 +62,8 @@ module PIXEL_ARRAY(
     PIXEL_ARRAY_BUS #(.BIT_DEPTH(BIT_DEPTH), .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), .WIDTH(WIDTH)) pab1(
         .DATA(data),
         .READ_CLK(read_clk_out),
-        .OUT(DATA_OUT)
+        .OUT(DATA_OUT),
+        .WRITE_CLK(DATA_OUT_CLK)
     );
 
 
