@@ -41,7 +41,7 @@ module PIXEL_STATE_MACHINE (
 
     //State duration in clock cycles
     parameter integer c_erase = 5;
-    parameter integer c_expose = 2**BIT_DEPTH - 1;
+    parameter integer c_expose = 255;
     parameter integer c_convert = 2**BIT_DEPTH - 1;
     parameter integer c_read = (2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT + 1;
 

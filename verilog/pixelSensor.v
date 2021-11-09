@@ -49,6 +49,7 @@ module PIXEL_SENSOR
 
    real             v_erase = 2.0;
    real             lsb = v_erase/(2**BIT_DEPTH - 1);
+   real             lsb_expose = v_erase/255;
    parameter real   dv_pixel = 0.5;
 
    real             tmp;
@@ -74,7 +75,7 @@ module PIXEL_SENSOR
    // Use bias to provide a clock for integration when exposing
    always @(posedge VBN1) begin
       if(EXPOSE)
-        tmp = tmp - dv_pixel*lsb;
+        tmp = tmp - dv_pixel*lsb_expose;
    end
 
    //----------------------------------------------------------------
