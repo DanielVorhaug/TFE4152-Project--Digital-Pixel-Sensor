@@ -99,7 +99,7 @@ XMNB0 VBN1 VBN1 VSS VSS NCHCM2
 *----------------------------------------------------------------
 .include pixelSensor.cir
 XDUT VBN1 VRAMP VRESET ERASE EXPOSE READ
-+ DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 VDD VSS PIXEL_SENSOR
++ DATA_9 DATA_8 DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 VDD VSS PIXEL_SENSOR
 
 
 *----------------------------------------------------------------
@@ -128,7 +128,9 @@ BR2 VRAMP VMIN I=V(ERASE)*V(VRAMP,VMIN)/100
 * In a real world circuit we would use a DAC, because in SystemVerilog, it's
 * easy to generate a digital bus
 B1 VADC 0 V = V(VRAMP) - VADC_MIN
-XADC7 VADC   REST_7 VREF DATA_7  READ CONVERT VDD ADC_1BIT
+XADC9 VADC   REST_9 VREF DATA_9  READ CONVERT VDD ADC_1BIT
+XADC8 REST_9 REST_8 VREF DATA_8  READ CONVERT VDD ADC_1BIT
+XADC7 REST_8 REST_7 VREF DATA_7  READ CONVERT VDD ADC_1BIT
 XADC6 REST_7 REST_6 VREF DATA_6  READ CONVERT VDD ADC_1BIT
 XADC5 REST_6 REST_5 VREF DATA_5  READ CONVERT VDD ADC_1BIT
 XADC4 REST_5 REST_4 VREF DATA_4  READ CONVERT VDD ADC_1BIT
@@ -136,7 +138,7 @@ XADC3 REST_4 REST_3 VREF DATA_3  READ CONVERT VDD ADC_1BIT
 XADC2 REST_3 REST_2 VREF DATA_2  READ CONVERT VDD ADC_1BIT
 XADC1 REST_2 REST_1 VREF DATA_1  READ CONVERT VDD ADC_1BIT
 XADC0 REST_1 REST_0 VREF DATA_0  READ CONVERT VDD ADC_1BIT
-XDAC0 DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 DO VDD DAC_8BIT
+XDAC0 DATA_9 DATA_8 DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 DO VDD DAC_8BIT
 
 *----------------------------------------------------------------
 * 1-bit ADC model
@@ -166,8 +168,9 @@ B5 DATA VDD I=V(READ)*V(DATA,VDD)/1e4
 * 8-bit DAC model model
 *----------------------------------------------------------------
 * integer = 2^7*b7 + 2^6*b6 ... 2^0*b0
-.SUBCKT DAC_8BIT DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 DO VDD
-B1 DO_VDD 0 V = 128*V(DATA_7) + 64*V(DATA_6) + 32*V(DATA_5) + 16*V(DATA_4)+ 8*V(DATA_3) + 4*V(DATA_2) + 2*V(DATA_1) + 1*V(DATA_0)
+.SUBCKT DAC_8BIT DATA_9 DATA_8 DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 DO VDD
+B1 DO_VDD 0 V = 512*V(DATA_9) + 256*V(DATA_8) + +128*V(DATA_7) + 64*V(DATA_6) + 32*V(DATA_5) + 16*V(DATA_4)+ 8*V(DATA_3) + 4*V(DATA_2) + 2*V(DATA_1) + 1*V(DATA_0)
+*(1*(DATA_9) + 1*(DATA_8) + 
 B2 DO 0 V = V(DO_VDD)/V(VDD)
 .ENDS
 
@@ -186,13 +189,15 @@ plot V(VRAMP) V(CONVERT) V(ERASE)
 plot V(DO)
 plot V(XDUT.VSTORE) V(ERASE) V(EXPOSE) V(CONVERT) V(VRAMP) V(XDUT.VCMP_OUT) V(READ)
 
-plot v(xdut.xm1.xm1.vg) v(xdut.xm1.xm1.dmem) v(DATA_0) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm2.vg) v(xdut.xm1.xm2.dmem) v(DATA_1) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm3.vg) v(xdut.xm1.xm3.dmem) v(DATA_2) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm4.vg) v(xdut.xm1.xm4.dmem) v(DATA_3) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm5.vg) v(xdut.xm1.xm5.dmem) v(DATA_4) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm6.vg) v(xdut.xm1.xm6.dmem) v(DATA_5) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm7.vg) v(xdut.xm1.xm7.dmem) v(DATA_6) V(XDUT.VCMP_OUT) V(READ)
-plot v(xdut.xm1.xm8.vg) v(xdut.xm1.xm8.dmem) v(DATA_7) V(XDUT.VCMP_OUT) V(READ)
+plot v(xdut.xm1.xm1.vg) v(xdut.xm1.xm1.dmem) v(DATA_0) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm2.vg) v(xdut.xm1.xm2.dmem) v(DATA_1) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm3.vg) v(xdut.xm1.xm3.dmem) v(DATA_2) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm4.vg) v(xdut.xm1.xm4.dmem) v(DATA_3) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm5.vg) v(xdut.xm1.xm5.dmem) v(DATA_4) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm6.vg) v(xdut.xm1.xm6.dmem) v(DATA_5) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm7.vg) v(xdut.xm1.xm7.dmem) v(DATA_6) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm8.vg) v(xdut.xm1.xm8.dmem) v(DATA_7) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm9.vg) v(xdut.xm1.xm9.dmem) v(DATA_8) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023
+plot v(xdut.xm1.xm10.vg) v(xdut.xm1.xm10.dmem) v(DATA_9) V(XDUT.VCMP_OUT) V(READ) V(DO)/1023        
 .endc
 .end
