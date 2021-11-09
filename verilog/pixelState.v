@@ -20,7 +20,7 @@ module PIXEL_STATE_MACHINE (
     parameter WIDTH = 2;
     parameter HEIGHT = 2;
     parameter OUTPUT_BUS_PIXEL_WIDTH = 2;
-    parameter BIT_DEPTH = 8;
+    parameter BIT_DEPTH = 10;
 
     parameter real dv_pixel = 0.5;  //Set the expected photodiode current (0-1)
    
@@ -37,11 +37,11 @@ module PIXEL_STATE_MACHINE (
     logic               convert = 0;
     logic               convert_stop;
     logic [2:0]         state,next_state;   //States
-    logic [8:0]         counter;            //Delay counter in state machine
+    logic [$clog2((2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT)+1:0]         counter;            //Delay counter in state machine, Assumes the longest state will be read
 
     //State duration in clock cycles
     parameter integer c_erase = 5;
-    parameter integer c_expose = 255;
+    parameter integer c_expose = 2**BIT_DEPTH - 1;
     parameter integer c_convert = 2**BIT_DEPTH - 1;
     parameter integer c_read = (2+WIDTH/OUTPUT_BUS_PIXEL_WIDTH)*HEIGHT + 1;
 
