@@ -80,6 +80,7 @@ module PIXEL_ARRAY(
     );
 
 
+        // Pixels
     genvar column;
     genvar row;
     generate
