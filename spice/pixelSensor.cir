@@ -101,11 +101,11 @@ mb1 VBN1 VBN1 VSS VSS nmos w=0.5u l=0.15u m=2
 mb2 VS VBN1 VSS VSS nmos w=0.5u l=0.15u m=2
 
 *INVERTER
-mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=5
+mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=4
 mn3 VO2 VO VSS VSS nmos w=0.5u l=0.15u
 
 *INVERTER
-mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.15u m=5
+mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.15u m=4
 mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
 
 
