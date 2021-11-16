@@ -1,8 +1,8 @@
 
 module PIXEL_ARRAY_COUNTER (
-    input logic COUNTER_RESET,
-    input logic COUNTER_CLOCK,
-    output logic [BIT_DEPTH - 1:0] DATA 
+    input   logic COUNTER_RESET,
+    input   logic COUNTER_CLOCK,
+    output  logic [BIT_DEPTH - 1:0] DATA 
 );    
 
     parameter BIT_DEPTH = 8;

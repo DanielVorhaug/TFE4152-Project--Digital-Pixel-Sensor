@@ -49,9 +49,9 @@ module PIXEL_STATE_MACHINE (
     parameter real dv_pixel = 0.5;  //Set the expected photodiode current (0-1)
    
    
-    assign ANALOG_RAMP = convert ? SYSTEM_CLK : 0;
-    assign COUNTER_CLOCK = ANALOG_RAMP;
-    assign VBN1 = EXPOSE ? SYSTEM_CLK : 0; // Amount of posedges decides how low photodiode voltage is
+    assign COUNTER_CLOCK    = ANALOG_RAMP;
+    assign ANALOG_RAMP      = convert ? SYSTEM_CLK : 0;
+    assign VBN1             = EXPOSE  ? SYSTEM_CLK : 0; // Amount of posedges decides how low photodiode voltage is
     
     //------------------------------------------------------------
     // State Machine
