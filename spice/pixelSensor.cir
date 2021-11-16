@@ -113,7 +113,6 @@ mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
 .ENDS
 
 .SUBCKT INVERTER VIN VOUT VDD VSS
-*Just a simple t2 inverter
-M1 VOUT VIN VDD VDD pmos w=0.5u l=0.15u
+M1 VOUT VIN VDD VDD pmos w=0.5u l=0.15u m=4
 M2 VOUT VIN VSS VSS nmos w=0.5u l=0.15u
 .ENDS
