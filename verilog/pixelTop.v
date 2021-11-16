@@ -27,8 +27,7 @@ module PIXEL_TOP (
             .WIDTH(WIDTH),
             .HEIGHT(HEIGHT),
             .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH),
-            .BIT_DEPTH(BIT_DEPTH)
-        ) 
+            .BIT_DEPTH(BIT_DEPTH)) 
         pstate(
             .SYSTEM_CLK (SYSTEM_CLK),
             .SYSTEM_RESET (SYSTEM_RESET),
@@ -49,8 +48,7 @@ module PIXEL_TOP (
             .WIDTH(WIDTH),
             .HEIGHT(HEIGHT), 
             .OUTPUT_BUS_PIXEL_WIDTH(OUTPUT_BUS_PIXEL_WIDTH), 
-            .BIT_DEPTH(BIT_DEPTH)
-        ) 
+            .BIT_DEPTH(BIT_DEPTH)) 
         pa1(
             .POWER_ENABLE (power_enable),
             .WRITE_ENABLE (write_enable),
@@ -66,7 +64,6 @@ module PIXEL_TOP (
             .VBN1 (vbn1),
             .DATA_OUT_CLK (DATA_OUT_CLK),
             .DATA_OUT (DATA_OUT)        
-        );
+    );
 
-    
 endmodule
