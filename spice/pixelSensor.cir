@@ -68,14 +68,12 @@ C1 VSTORE VSS 100f
 Rleak VSTORE VSS 100T
 
 * Switch to reset voltage on capacitor
-*BR1 VRESET VSTORE I=V(ERASE)*V(VRESET,VSTORE)/1k
 MnReset VRESET ERASE VSTORE VSS nmos w=0.5u l=0.15u
 XI1 ERASE ERASE_N VDD VSS INVERTER
 MpReset VSTORE ERASE_N VRESET VDD pmos w=0.5u l=0.15u m=4
 *Might want to drop m = 4 on the pmos
 
 * Switch to expose pixel
-*BR2 VPG VSTORE I=V(EXPOSE)*V(VSTORE,VPG)/1k
 MnExpose VPG EXPOSE VSTORE VSS nmos w=0.5u l=0.15u
 XI2 EXPOSE EXPOSE_N VDD VSS INVERTER
 MpExpose VSTORE EXPOSE_N VPG VDD pmos w=0.5u l=0.15u m=4
@@ -109,8 +107,6 @@ mn3 VO2 VBN1 VSS VSS nmos w=0.5u l=0.15u
 mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.5u
 mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
 
-* Model comparator
-*BC1 VCMP_OUT VSS V = ((atan(100000*(V(VSTORE) - V(VRAMP)))) + 1.58)/3.14*1.5
 
 
 .ENDS
