@@ -10,15 +10,13 @@ module PIXEL_ARRAY_COUNTER_tb;
     always #clk_period clk=~clk;
 
 
-
     PIXEL_ARRAY_COUNTER #() pa1(
         .COUNTER_RESET (reset),
         .COUNTER_CLOCK (clk),
-        .DATA (counter) );
+        .DATA (counter) 
+    );
 
-    //------------------------------------------------------------
-    // Testbench stuff
-    //------------------------------------------------------------
+
     initial
         begin
             reset = 1;
@@ -34,8 +32,6 @@ module PIXEL_ARRAY_COUNTER_tb;
                 reset = 0;
             #sim_end
                 $stop;
-
-
         end
     
 endmodule
