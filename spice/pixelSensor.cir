@@ -68,14 +68,12 @@ C1 VSTORE VSS 100f
 Rleak VSTORE VSS 100T
 
 * Switch to reset voltage on capacitor
-*BR1 VRESET VSTORE I=V(ERASE)*V(VRESET,VSTORE)/1k
 MnReset VRESET ERASE VSTORE VSS nmos w=0.5u l=0.15u
 XI1 ERASE ERASE_N VDD VSS INVERTER
 MpReset VSTORE ERASE_N VRESET VDD pmos w=0.5u l=0.15u m=4
 *Might want to drop m = 4 on the pmos
 
 * Switch to expose pixel
-*BR2 VPG VSTORE I=V(EXPOSE)*V(VSTORE,VPG)/1k
 MnExpose VPG EXPOSE VSTORE VSS nmos w=0.5u l=0.15u
 XI2 EXPOSE EXPOSE_N VDD VSS INVERTER
 MpExpose VSTORE EXPOSE_N VPG VDD pmos w=0.5u l=0.15u m=4
@@ -93,8 +91,8 @@ Rphoto VPG VSS 50Meg
 mp1 VP VP VDD VDD pmos w=0.5u l=0.5u m=2
 mp2 VO VP VDD VDD pmos w=0.5u l=0.5u m=2
 
-mn1 VO VRAMP VS VS nmos w=0.5u l=0.15u
-mn2 VP VSTORE VS VS nmos w=0.5u l=0.15u
+mn1 VP VSTORE VS VS nmos w=0.5u l=0.15u
+mn2 VO VRAMP VS VS nmos w=0.5u l=0.15u
 
 I3 0 VBN1 dc 10u
 *The last transistor is part of a current mirror, so modeling it as a current source makes sense
@@ -102,15 +100,14 @@ I3 0 VBN1 dc 10u
 mb1 VBN1 VBN1 VSS VSS nmos w=0.5u l=0.15u m=2
 mb2 VS VBN1 VSS VSS nmos w=0.5u l=0.15u m=2
 
-mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=5
-mn3 VO2 VBN1 VSS VSS nmos w=0.5u l=0.15u
+*INVERTER
+mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=4
+mn3 VO2 VO VSS VSS nmos w=0.5u l=0.15u
 
 *INVERTER
-mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.5u
+mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.15u m=4
 mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
 
-* Model comparator
-*BC1 VCMP_OUT VSS V = ((atan(100000*(V(VSTORE) - V(VRAMP)))) + 1.58)/3.14*1.5
 
 
 .ENDS
