@@ -1,8 +1,8 @@
 module PIXEL_ARRAY_BUS (
-    input logic [WIDTH*BIT_DEPTH-1:0] DATA,
-    input logic READ_CLK,
-    input logic WRITE_CLK,
-    output logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] OUT
+    input   logic [WIDTH*BIT_DEPTH-1:0] DATA,
+    input   logic READ_CLK,
+    input   logic WRITE_CLK,
+    output  logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] OUT
 );
 
 parameter integer BIT_DEPTH = 8;
@@ -29,10 +29,5 @@ endgenerate
 always_ff @(posedge WRITE_CLK) begin
     buffer[WIDTH*BIT_DEPTH-1:WIDTH*BIT_DEPTH-OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH] <= '0;
 end
-
-
-// always_comb begin
-//     OUT = buffer;
-// end
 
 endmodule
