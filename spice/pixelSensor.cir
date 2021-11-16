@@ -105,7 +105,7 @@ mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=5
 mn3 VO2 VO VSS VSS nmos w=0.5u l=0.15u
 
 *INVERTER
-mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.5u
+mp4 VCMP_OUT VO2 VDD VDD pmos w=0.5u l=0.15u m=5
 mn4 VCMP_OUT VO2 VSS VSS nmos w=0.5u l=0.15u
 
 
