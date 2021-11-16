@@ -8,5 +8,4 @@ parameter integer HEIGHT = 2;
 
 assign ROW_SELECT = ENABLE ? (1 << CONTROL) : '0;
 
-
 endmodule

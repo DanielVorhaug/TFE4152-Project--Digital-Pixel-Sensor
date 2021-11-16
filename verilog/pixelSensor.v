@@ -102,7 +102,7 @@ module PIXEL_SENSOR
    //----------------------------------------------------------------
    // Readout
    //----------------------------------------------------------------
-   // Assign data to bus when pixRead = 0
+   // Assign data to bus when pixRead = 1
    assign DATA = READ ? p_data : 'Z;
 
 endmodule // re_control
