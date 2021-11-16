@@ -183,7 +183,7 @@ set color0=white
 set color1=black
 unset askquit
 tran 1n 60u
-*plot V(ERASE) V(EXPOSE) V(CONVERT) V(READ)
+plot V(ERASE) V(EXPOSE) V(CONVERT) V(READ)
 plot V(VRAMP) V(CONVERT) V(ERASE)
 plot V(DO)
 plot V(XDUT.VSTORE) V(ERASE) V(EXPOSE) V(CONVERT) V(VRAMP) V(XDUT.VCMP_OUT) V(READ)
