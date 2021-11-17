@@ -11,10 +11,6 @@ module PIXEL_ARRAY_COUNTER (
 
     logic [BIT_DEPTH - 1:0] counter = '0;
 
-    // always_comb begin
-    //     counter = DATA + 1;
-    // end
-
     always_ff @(posedge COUNTER_CLOCK or posedge COUNTER_RESET) begin
         if (COUNTER_RESET) begin
             counter <= 0;
