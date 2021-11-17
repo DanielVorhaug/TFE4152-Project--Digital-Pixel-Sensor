@@ -94,7 +94,7 @@ mp2 VO VP VDD VDD pmos w=0.5u l=0.5u
 mn1 VP VSTORE VS VS nmos w=0.5u l=0.15u m=2
 mn2 VO VRAMP VS VS nmos w=0.5u l=0.15u m=2
 
-I3 0 VBN1 dc 10u
+I3 0 VBN1 dc 6u
 *This is just making a current mirror out of the lowest transistor
 mb1 VBN1 VBN1 VSS VSS nmos w=0.5u l=0.5u
 mb2 VS VBN1 VSS VSS nmos w=0.5u l=0.5u
