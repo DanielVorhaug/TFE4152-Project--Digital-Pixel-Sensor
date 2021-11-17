@@ -70,13 +70,13 @@ Rleak VSTORE VSS 100T
 * Switch to reset voltage on capacitor
 MnReset VRESET ERASE VSTORE VSS nmos w=0.5u l=0.15u
 XI1 ERASE ERASE_N VDD VSS INVERTER
-MpReset VSTORE ERASE_N VRESET VDD pmos w=0.5u l=0.15u m=4
+MpReset VRESET ERASE_N VSTORE VDD pmos w=0.5u l=0.15u m=4
 *Might want to drop m = 4 on the pmos
 
 * Switch to expose pixel
 MnExpose VPG EXPOSE VSTORE VSS nmos w=0.5u l=0.15u
 XI2 EXPOSE EXPOSE_N VDD VSS INVERTER
-MpExpose VSTORE EXPOSE_N VPG VDD pmos w=0.5u l=0.15u m=4
+MpExpose VPG EXPOSE_N VSTORE VDD pmos w=0.5u l=0.15u m=4
 
 * Model photocurrent
 * Set current source between 10n and 22n
@@ -95,10 +95,9 @@ mn1 VP VSTORE VS VS nmos w=0.5u l=0.15u m=2
 mn2 VO VRAMP VS VS nmos w=0.5u l=0.15u m=2
 
 I3 0 VBN1 dc 10u
-*The last transistor is part of a current mirror, so modeling it as a current source makes sense
-
-mb1 VBN1 VBN1 VSS VSS nmos w=0.5u l=0.15u
-mb2 VS VBN1 VSS VSS nmos w=0.5u l=0.15u
+*This is just making a current mirror out of the lowest transistor
+mb1 VBN1 VBN1 VSS VSS nmos w=0.5u l=0.5u
+mb2 VS VBN1 VSS VSS nmos w=0.5u l=0.5u
 
 *INVERTER
 mp3 VO2 VO VDD VDD pmos w=0.5u l=0.15u m=4
