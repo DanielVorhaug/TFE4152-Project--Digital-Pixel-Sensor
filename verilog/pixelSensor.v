@@ -102,6 +102,7 @@ module PIXEL_SENSOR
    // Readout
    //----------------------------------------------------------------
    // Assign data to bus when pixRead = 1
-   assign DATA = READ ? p_data : 'Z;
+   // The readout of the memory inverts the data
+   assign DATA = READ ? ~p_data : 'Z;
 
 endmodule // re_control
