@@ -42,10 +42,6 @@ module pixelTop_tb;
             
             #sim_end
             #sim_end
-            #sim_end
-            #sim_end
-            #sim_end
-            #sim_end
                 $stop;
 
 
