@@ -6,10 +6,10 @@ module PIXEL_TOP (
     output logic DATA_OUT_CLK,
     output logic [OUTPUT_BUS_PIXEL_WIDTH*BIT_DEPTH-1:0] DATA_OUT
 );
-    parameter WIDTH = 2;
-    parameter HEIGHT = 2;
-    parameter OUTPUT_BUS_PIXEL_WIDTH = 2;
-    parameter BIT_DEPTH = 8;
+    parameter WIDTH = 100;
+    parameter HEIGHT = 100;
+    parameter OUTPUT_BUS_PIXEL_WIDTH = 10;
+    parameter BIT_DEPTH = 10;
 
     logic power_enable;
     logic write_enable;
