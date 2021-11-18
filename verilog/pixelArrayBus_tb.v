@@ -3,12 +3,12 @@
 module PIXEL_ARRAY_BUS_tb ();
 
 
-parameter integer BIT_DEPTH = 8;
-parameter integer OUTPUT_BUS_PIXEL_WIDTH = 2;
-parameter integer WIDTH = 6;
+parameter integer BIT_DEPTH = 10;
+parameter integer OUTPUT_BUS_PIXEL_WIDTH = 4;
+parameter integer WIDTH = 8;
 logic READ_CLK = 0;
-logic [WIDTH*8-1:0] INPUT;
-wire [15:0] OUT;
+logic [WIDTH*BIT_DEPTH-1:0] INPUT;
+wire [BIT_DEPTH*OUTPUT_BUS_PIXEL_WIDTH-1:0] OUT;
 parameter integer sim_period = 300;
 logic WRITE_CLK = 0;
 //always #10 WRITE_CLK = ~WRITE_CLK;
@@ -21,15 +21,11 @@ initial
     begin
         $dumpfile("simulation/PIXEL_ARRAY_BUS_tb.vcd");
         $dumpvars(0, PIXEL_ARRAY_BUS_tb);
-        INPUT = 'h103256237777;
+        INPUT = 'h10325623777788885555;
         #sim_period
         READ_CLK = 1;
         #10
         READ_CLK = 0;
-        #10
-        WRITE_CLK = 1;
-        #10
-        WRITE_CLK = 0;
         #10
         WRITE_CLK = 1;
         #10
