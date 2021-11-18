@@ -1,4 +1,4 @@
-* Pixel sensor testbench
+3* Pixel sensor testbench
 **********************************************************************
 **        Copyright (c) 2021 Carsten Wulff Software, Norway
 ** *******************************************************************
@@ -110,7 +110,7 @@ XDUT VBN1 VRAMP VRESET ERASE EXPOSE READ
 * dt = PW_CONVERT
 * C = 1n
 * dV = VADC_MAX - VADC_MIN
-BR1 0 VRAMP I = V(CONVERT)*( 1n*(VADC_MAX - VADC_MIN)/PW_CONVERT)
+BR1 0 VRAMP I = V(CONVERT)/1.36*( 1n*(VADC_MAX - VADC_MIN)/PW_CONVERT)
 CR1 VRAMP 0 1n ic=0
 
 * SPICE freaks out if any node only have current sources and capacitors on it. so insert a resistor to ground
@@ -169,7 +169,7 @@ B5 DATA VDD I=V(READ)*V(DATA,VDD)/1e4
 *----------------------------------------------------------------
 * integer = 2^9*b9 + 2^8*b8 ... 2^0*b0
 .SUBCKT DAC_10BIT DATA_9 DATA_8 DATA_7 DATA_6 DATA_5 DATA_4 DATA_3 DATA_2 DATA_1 DATA_0 DO VDD
-B1 DO_VDD 0 V = 512*V(DATA_9) + 256*V(DATA_8) + +128*V(DATA_7) + 64*V(DATA_6) + 32*V(DATA_5) + 16*V(DATA_4)+ 8*V(DATA_3) + 4*V(DATA_2) + 2*V(DATA_1) + 1*V(DATA_0)
+B1 DO_VDD 0 V = 512*V(DATA_9) + 256*V(DATA_8) + 128*V(DATA_7) + 64*V(DATA_6) + 32*V(DATA_5) + 16*V(DATA_4)+ 8*V(DATA_3) + 4*V(DATA_2) + 2*V(DATA_1) + 1*V(DATA_0)
 B2 DO 0 V = V(DO_VDD)/V(VDD)
 .ENDS
 
