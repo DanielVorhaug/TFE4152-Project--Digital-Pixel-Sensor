@@ -16,7 +16,7 @@ module PIXEL_ARRAY_BUS (
 
         // Reads data from one row into the buffer
     always_ff @(posedge READ_CLK) begin
-        buffer <= DATA;
+        buffer <= ~DATA; // Data is inverted back after it has been inverted by the pixel-memory
     end
 
 

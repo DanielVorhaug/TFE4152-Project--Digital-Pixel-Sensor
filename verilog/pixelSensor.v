@@ -65,7 +65,7 @@ module PIXEL_SENSOR
    always @(ERASE) begin
       tmp = v_erase;
       p_data = 0;
-      cmp  = 0;
+      cmp  = 1;
       adc = 0;
    end
 
@@ -86,14 +86,14 @@ module PIXEL_SENSOR
    always @(posedge RAMP) begin
       adc = adc + lsb;
       if(adc > tmp)
-        cmp <= 1;
+        cmp <= 0;
    end
 
    //----------------------------------------------------------------
    // Memory latch
    //----------------------------------------------------------------
    always_comb  begin
-      if(!cmp) begin
+      if(cmp) begin
          p_data = DATA;
       end
    end
@@ -102,6 +102,7 @@ module PIXEL_SENSOR
    // Readout
    //----------------------------------------------------------------
    // Assign data to bus when pixRead = 1
-   assign DATA = READ ? p_data : 'Z;
+   // The readout of the memory inverts the data
+   assign DATA = READ ? ~p_data : 'Z;
 
 endmodule // re_control
