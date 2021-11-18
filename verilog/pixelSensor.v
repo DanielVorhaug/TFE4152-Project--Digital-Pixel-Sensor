@@ -47,10 +47,11 @@ module PIXEL_SENSOR
 
    parameter integer BIT_DEPTH = 8;
 
-   real             v_erase = 2.0;
-   real             lsb = v_erase/(2**BIT_DEPTH - 1);
-   real             lsb_expose = v_erase/255;
-   parameter real   dv_pixel = 0.5;
+   real             v_erase      = 1.1;
+   real             v_min        = 0.5;
+   real             lsb          = (v_erase-v_min)/(2**BIT_DEPTH);
+   real             lsb_expose   = (v_erase-v_min)/(2**BIT_DEPTH);
+   parameter real   dv_pixel     = 0.8;
 
    real             tmp;
    logic            cmp;
@@ -66,7 +67,7 @@ module PIXEL_SENSOR
       tmp = v_erase;
       p_data = 0;
       cmp  = 1;
-      adc = 0;
+      adc = v_min;
    end
 
    //----------------------------------------------------------------
