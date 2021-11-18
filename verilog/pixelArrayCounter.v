@@ -16,6 +16,7 @@ module PIXEL_ARRAY_COUNTER (
             counter <= counter + 1;
         end
 
+            // Gray-coding the counter
         DATA[BIT_DEPTH-1]   <= counter[BIT_DEPTH-1];
         DATA[BIT_DEPTH-2:0] <= counter[BIT_DEPTH-1:1] ^ counter[BIT_DEPTH-2:0];
     end
