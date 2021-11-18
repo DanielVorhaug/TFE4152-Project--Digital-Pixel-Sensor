@@ -110,7 +110,7 @@ XDUT VBN1 VRAMP VRESET ERASE EXPOSE READ
 * dt = PW_CONVERT
 * C = 1n
 * dV = VADC_MAX - VADC_MIN
-BR1 0 VRAMP I = V(CONVERT)*( 1n*(VADC_MAX - VADC_MIN)/PW_CONVERT)
+BR1 0 VRAMP I = V(CONVERT)/1.36*( 1n*(VADC_MAX - VADC_MIN)/PW_CONVERT)
 CR1 VRAMP 0 1n ic=0
 
 * SPICE freaks out if any node only have current sources and capacitors on it. so insert a resistor to ground
